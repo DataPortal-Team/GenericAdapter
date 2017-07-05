@@ -18,17 +18,13 @@ EPLAN Data Portal Adapters Documentation
  ---
  Third party application (website) allowing to select already existing parts in Data Portal database (without any customization).
 
- <video width="740" controls loop>
-    <source src="resources/selector.mp4" type="video/mp4">
- </video>
+ [Video](resources/selector.mp4) that shows usage of selector.
 
  Configurator
  ---
  Third party application (website) that may customize parts to have properties not existing in Data Portal database.
 
- <video width="740" controls loop>
-    <source src="resources/configurator.mp4" type="video/mp4">
- </video>
+ [Video](resources/configurator.mp4) that shows usage of configurator.
 
 Under the hood
 ---
