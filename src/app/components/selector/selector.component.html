@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 left-side text-center">
+      <h3>Available parts</h3>
+        <table class="center">
+          <tbody>
+          <tr *ngFor="let part of parts">
+            <td>
+                <button type="button" class="btn btn-success" (click)="addPart(part)">{{ part }}</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6 right-side text-center">
+      <h3>Selected parts</h3>
+      <table class="center">
+        <tbody>
+        <tr *ngFor="let part of selectedParts">
+          <td>
+            <button type="button" class="btn btn-warning" (click)="removePart(part)">{{ part }}</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row text-center">
+    <button type="button" class="btn btn-primary center" (click)="sendParts()">Finish</button>
+  </div>
+</div>

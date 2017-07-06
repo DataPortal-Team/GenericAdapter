@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+.body {
+    display: table;
+}
+
+.left-side {
+    float: none;
+    display: table-cell;
+}
+
+.right-side {
+    float: none;
+    display: table-cell;
+}
+
+.container-fluid, .container {
+    margin-top: 15px;
+}
+
+.center {
+    margin: 0 auto;
+}

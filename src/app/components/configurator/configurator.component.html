@@ -1,0 +1,93 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 left-side">
+            <h3>Add part</h3>
+            <div class="form-horizontal">
+                <h4>Root part number: {{rootPartNumber}}</h4>
+                <h4 *ngIf="customData">Free property 74: {{customData}}</h4>
+                <form class="col-sm-4" #configurePartForm="ngForm">
+                    <div class="form-group">
+                        <label for="quantity">{{ articleData.quantity.translation }}</label>
+                        <input type="number" class="form-control" name="quantity" id="quantity"
+                               [(ngModel)]="configuredPart.quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">{{ articleData.description.translation }}</label>
+                        <input class="form-control" name="description" id="description"
+                               [(ngModel)]="configuredPart.description" required>
+                    </div>
+                    <div class="form-group" *ngIf="dataSet == 2 || dataSet == 1">
+                        <label for="voltage">{{ articleData.P_ARTICLE_VOLTAGE.translation }}</label>
+                        <select class="form-control" name="voltage" id="voltage"
+                                [(ngModel)]="configuredPart.variant.P_ARTICLE_VOLTAGE" required>
+                            <option *ngFor="let value of articleData.P_ARTICLE_VOLTAGE.values">{{ value }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="dataSet == 1">
+                        <label for="wireCount">{{ articleData.P_ARTICLE_CABLEWIRECOUNT.translation }}</label>
+                        <select class="form-control" name="wireCount" id="wireCount"
+                                [(ngModel)]="configuredPart.variant.P_ARTICLE_CABLEWIRECOUNT" required>
+                            <option *ngFor="let value of articleData.P_ARTICLE_CABLEWIRECOUNT.values">{{ value }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="dataSet == 1">
+                        <label for="wireCrossSection">{{ articleData.P_ARTICLE_CABLEWIRECROSSSECTION.translation
+                            }}</label>
+                        <select class="form-control" name="wireCrossSection" id="wireCrossSection"
+                                [(ngModel)]="configuredPart.variant.P_ARTICLE_CABLEWIRECROSSSECTION" required>
+                            <option *ngFor="let value of articleData.P_ARTICLE_CABLEWIRECROSSSECTION.values">{{ value
+                                }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="dataSet == 1">
+                        <label for="electricalCurrent">{{ articleData.P_ARTICLE_ELECTRICALCURRENT.translation }}</label>
+                        <select class="form-control" name="electricalCurrent" id="electricalCurrent"
+                                [(ngModel)]="configuredPart.variant.P_ARTICLE_ELECTRICALCURRENT" required>
+                            <option *ngFor="let value of articleData.P_ARTICLE_ELECTRICALCURRENT.values">{{ value }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group" *ngIf="dataSet == 2">
+                        <label for="pinCount">{{ articleData.P_ARTICLE_PINCOUNT.translation }}</label>
+                        <select class="form-control" name="pinCount" id="pinCount"
+                                [(ngModel)]="configuredPart.variant.P_ARTICLE_PINCOUNT" required>
+                            <option *ngFor="let value of articleData.P_ARTICLE_PINCOUNT.values">{{ value }}</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-default center" [disabled]="!configurePartForm.valid"
+                                (click)="addConfiguredPart()">Add part
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="com-sm-6 right-side">
+            <h3>Configured parts</h3>
+            <div *ngFor="let part of configuredParts">
+                <h4 class="card-title">{{ part.part.P_ARTICLE_PARTNR }}</h4>
+                <ul>
+                    <li>{{ articleData.quantity.translation }}: {{part.quantity}}</li>
+                    <li>{{ articleData.description.translation }}: {{ part.description}}</li>
+                    <li *ngIf="dataSet == 1 || dataSet == 2">{{ articleData.P_ARTICLE_VOLTAGE.translation }}: {{ part.variant.P_ARTICLE_VOLTAGE}}</li>
+                    <li *ngIf="dataSet == 1">{{ articleData.P_ARTICLE_CABLEWIRECOUNT.translation }}:
+                        {{ part.variant.P_ARTICLE_CABLEWIRECOUNT}}
+                    </li>
+                    <li *ngIf="dataSet == 1">{{ articleData.P_ARTICLE_CABLEWIRECROSSSECTION.translation }}:
+                        {{ part.variant.P_ARTICLE_CABLEWIRECROSSSECTION}}
+                    </li>
+                    <li *ngIf="dataSet == 1">{{ articleData.P_ARTICLE_ELECTRICALCURRENT.translation }}:
+                        {{ part.variant.P_ARTICLE_ELECTRICALCURRENT}}
+                    </li>
+                    <li *ngIf="dataSet == 2">{{ articleData.P_ARTICLE_PINCOUNT.translation }}: {{ part.variant.P_ARTICLE_PINCOUNT}}</li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <button type="button" class="btn btn-primary center" (click)="sendConfiguredParts()">Finish</button>
+    </div>
+</div>
